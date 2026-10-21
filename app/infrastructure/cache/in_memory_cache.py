@@ -1,9 +1,8 @@
 """In-memory cache implementation with TTL.
 
 A simple thread-safe dictionary-based cache. Suitable for the MVP: data
-changes very rarely (Spotify top tracks, artist profile) so an in-process
-cache is enough. The interface allows swapping in Redis later without
-touching the application layer.
+changes very rarely so an in-process cache is enough. The interface allows
+swapping in Redis later without touching the application layer.
 """
 
 import threading

@@ -15,9 +15,6 @@ class Settings(BaseSettings):
     """Runtime configuration for the Diferenzzia API.
 
     Attributes:
-        spotify_client_id: Spotify application client ID.
-        spotify_client_secret: Spotify application client secret.
-        spotify_artist_id: Default artist queried by the API.
         api_key: Secret used to protect administrative endpoints.
         allowed_origins: Comma-separated list of allowed CORS origins.
         cache_ttl_hours: Cache time-to-live in hours.
@@ -30,11 +27,6 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    spotify_client_id: str = Field(..., description="Spotify client ID")
-    spotify_client_secret: str = Field(
-        ..., description="Spotify client secret"
-    )
-    spotify_artist_id: str = Field(..., description="Default Spotify artist ID")
     api_key: str = Field(..., description="API key for admin endpoints")
     allowed_origins: str = Field(
         default="http://localhost:5173",
@@ -44,12 +36,7 @@ class Settings(BaseSettings):
         default=24, ge=1, description="Cache TTL in hours"
     )
 
-    @field_validator(
-        "spotify_client_id",
-        "spotify_client_secret",
-        "spotify_artist_id",
-        "api_key",
-    )
+    @field_validator("api_key")
     @classmethod
     def _not_blank(cls, value: str) -> str:
         """Ensure required string settings are not empty.

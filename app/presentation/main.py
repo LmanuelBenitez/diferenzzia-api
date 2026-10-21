@@ -22,8 +22,7 @@ logger = logging.getLogger(__name__)
 
 APP_TITLE = "Diferenzzia API"
 APP_DESCRIPTION = (
-    "REST API that exposes cached Spotify data (top tracks, artist) for the "
-    "Diferenzzia website."
+    "REST API for the Diferenzzia website."
 )
 APP_VERSION = "1.0.0"
 
